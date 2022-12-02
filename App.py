@@ -4,16 +4,16 @@
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
-import math
-import numpy
+import numpy as np
 
 from physclasses import *
+from configsolsys import test_object
 
 #################################################################################
 
 class App():
     
-    def __init__(self):
+    def __init__(self, time, speed):
         self.fig = plt.figure()
         self.ax = p3.Axes3D(self.fig)
         
@@ -24,45 +24,59 @@ class App():
         self.ax.set_zlabel('Z')
         self.ax.set_zlim3d([-10, 10])
         
+        self.time = time
+        self.speed = speed
+        
         self.system = System()
-        self.points = []
+        self.artists = []
 
 
     def draw_body(self):
         for body in self.system.bodies.values():
             body.calc_pos(0)
-            self.points.append(self.ax.scatter(body.pos.x, body.pos.y, body.pos.z, color=body.color,\
+            self.artists.append(self.ax.scatter(body.pos.x, body.pos.y, body.pos.z, color=body.color,\
                             marker='o', edgecolor="black", linewidth=1))
             
-            
-    def draw_ellipse(self):
+    def init_ellipse(self):
         for body in self.system.bodies.values():
             body.calc_ellipse()
             self.ax.plot3D(body.ellipse[0], body.ellipse[1], body.ellipse[2],\
                 alpha=0.25, color="black")
             
+    def initial_calculation(self):
+        self.init_ellipse()
+        self.draw_body()
+        for t in range(1,self.time):
+            for body in self.system.bodies.values():
+                body.calc_pos(t)
+                
+        self.data = self.system.bodies.values()
             
-    def update(self):
-        self.system.t += 1
-        for point in self.points:
-            #planet.calc_pos(times[frame])
-            point._offsets3d = (0,0,0)
 
-    # def frame(self, f, artists):
-    #     self.system.t += 1
-    #     for body in self.system.bodies.values():
+    def frame(self, numb, data, artists):
+        data = list(data)
         
-    #         body.calc_pos(self.system.t)
-    #         artists[0]._offsets3d = (body.pos.x, body.pos.y, body.pos.z)
+        assert isinstance(data[0].lposx[0],float)
+        
+        for body, artist in zip(data, artists):
+        
+            body.calc_pos(self.system.t)
             
-    #     return artists[0]
+            artist._offsets3d = (np.array([body.lposx[numb]]), np.array([body.lposy[numb]]),\
+                np.array([body.lposz[numb]]))
+
+        return artists
             
-    # def animate(self):        
+            
+    def animate(self):        
         
-    #     ani = animation.FuncAnimation(self.fig, 19, self.frame, fargs=(self.points),
-    #                             interval=40, blit=True)
         
-    #     return ani
+        ani = animation.FuncAnimation(self.fig, self.frame, self.time, fargs=(self.data, self.artists),
+                                interval=40, blit=False)
+        
+        self.show()
+        
+        return ani
         
       
     
@@ -71,3 +85,13 @@ class App():
         
     def close(self):
         plt.close()
+        
+        
+if __name__ == "__main__":
+    app = App(200)
+    
+    test_object(app)
+    
+    app.initial_calculation()
+    
+    anim = app.animate()

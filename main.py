@@ -10,33 +10,22 @@ from configsolsys import *
 
 def main():
 
-    app = App()
+    app = App(200)
 
-    #star = CelestialBody(color="yellow")
+    inner_planets(app)
     
-    #inner_planets(app)
+    #solsys(app)
     
-    solsys(app)
+    #test_object(app)
     
-    #app.system.add_body(earth)
-    
-    #app.system.add_body(star)
+    app.initial_calculation()
 
-    app.draw_body()
-
-    app.draw_ellipse()
-
+    anim = app.animate()
+    
     app.show()
-
-    #anim = app.animate()
     
-    #app.show()
     
-    for i in range(100):
-        #app.animate()
-        app.update()
-        app.show()
-        app.close()
+    
 
 
 if __name__ == "__main__":

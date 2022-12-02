@@ -34,6 +34,10 @@ class CelestialBody():
         self.R = R_orb2ec(self.orbital_elements)
         
         self.ellipse = [[],[],[]]
+        
+        self.lposx = []
+        self.lposy = []
+        self.lposz = []
     
     def __str__(self):
         return self.name
@@ -56,6 +60,11 @@ class CelestialBody():
         self.pos = calc_orb_pos(self.orbital_elements, E)
         
         self.pos = self.R*self.pos
+        
+        self.lposx.append(self.pos.x)
+        self.lposy.append(self.pos.y)
+        self.lposz.append(self.pos.z)        
+
     
     def calc_ellipse(self):
         for i in numpy.linspace(0,2*math.pi,400):

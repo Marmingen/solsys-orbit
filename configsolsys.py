@@ -55,4 +55,12 @@ def inner_planets(app):
     app.system.add_body(mercury)
 
     app.ax.scatter(0,0,0,color="yellow",edgecolor="black")
+
+def test_object(app):
     
+    earth_orbs = [1, 0.0167, 0, 114.208, -11.2606]
+    earth = CelestialBody(name="Earth", mass=5.9722e24, orbital_elements=earth_orbs,\
+        color="blue")
+
+    
+    app.system.add_body(earth)
