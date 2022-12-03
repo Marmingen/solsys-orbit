@@ -105,6 +105,7 @@ def add_halleys(app):
     app.system.add_body(halley)
     
 def comets(app):
+    add_earth(app)
     add_halleys(app)
     
 def custom(app):

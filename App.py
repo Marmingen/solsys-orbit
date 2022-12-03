@@ -16,7 +16,7 @@ from mathematics.astrofuncs import nrml_to_JDT
 
 class App():
     
-    def __init__(self, time, speed=1, interval=1, date=J2000):
+    def __init__(self, time=1, speed=10, interval=1, date=J2000):
         self.fig = plt.figure()
         self.ax = p3.Axes3D(self.fig)
         
@@ -32,15 +32,28 @@ class App():
         else:
             self.date = nrml_to_JDT(date)
         
-        self.time = time
-        self.speed = 200/speed
-        self.interval = interval
+        self.set_time(time)
+        self.set_speed(speed)
+        self.set_interval(interval)
         
         self.system = System()
         self.artists = []
         # self.labels = []
         
         self.ax.scatter(0,0,0,color="yellow",marker='o', edgecolor="black", label="Sun")
+        
+        
+    def set_time(self, t):
+        self.time = t
+    
+    def set_speed(self, speed):
+        self.speed = 1000/speed
+    
+    def set_interval(self, interval):
+        self.interval = interval
+        
+    def set_date(self, date):
+        self.date = nrml_to_JDT(date)
 
 
     def draw_body(self):
@@ -65,7 +78,7 @@ class App():
         """the first call after adding all celestial bodies"""
         self.init_ellipse()
         self.draw_body()
-        for t in range(1,self.time, self.interval):
+        for t in range(0,self.time, self.interval):
             for body in self.system.bodies.values():
                 body.calc_pos(self.date + t)
                 
@@ -74,15 +87,10 @@ class App():
         
 
     def frame(self, numb, data, artists):
-        """frame-function for the matplotlib animation"""
+        """frame-method for the matplotlib animation"""
         data = list(data)
-        
+             
         for body, artist in zip(data, artists):
-        
-            body.calc_pos(0)
-            
-            # label.position = (body.pos.x, body.pos.y, body.pos.z)
-            
             artist._offsets3d = (np.array([body.lposx[numb]]), np.array([body.lposy[numb]]),\
                 np.array([body.lposz[numb]]))
 
@@ -91,10 +99,12 @@ class App():
             
     def animate(self):        
         """matplotlib animation with self.speed ms interval between frames"""
-        ani = animation.FuncAnimation(self.fig, self.frame, self.time, fargs=(self.data, self.artists),
-                                interval=self.speed, blit=False, repeat=False)
+        ani = animation.FuncAnimation(self.fig, self.frame,\
+            int(len(list(self.system.bodies.values())[0].lposx)),\
+            fargs=(self.data, self.artists), interval=self.speed, blit=False)
+
         self.show()
-        
+
         return ani
         
     
@@ -115,7 +125,9 @@ class App():
         
 if __name__ == "__main__":
     
-    app = App(2000,10,10)
+    app = App(900,60,10)
+    
+    app.set_date("1985-01-01-00")
     
     test_object(app)
     
@@ -124,3 +136,5 @@ if __name__ == "__main__":
     app.initial_calculation()
     
     anim = app.animate()
+    
+    app.save(anim, "halley_passage.gif")
