@@ -46,3 +46,17 @@ def R_orb2ec(elements):
     R = Matrix("R_orb2ec", R11, R12, R13, R21, R22, R23,\
         R31, R32, R33)
     return R
+
+def nrml_to_JDT(date):
+    date = date.split("-")
+    Y = int(date[0])
+    M = int(date[1])
+    D = int(date[2])
+    H = int(date[3])
+    
+    JD = 367*Y - int(7/4*(Y + int((M+9)/12)))
+    JD += int(275*M/9)
+    JD += D + 1721013.5
+    JD -=H/24
+
+    return JD

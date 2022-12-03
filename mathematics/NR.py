@@ -1,5 +1,11 @@
+#################################################################################
+## IMPORT
+
 import numpy as np
 import sympy
+
+#################################################################################
+## NEWTON-RAPHSON METHOD FOR KEPLER'S EQ
 
 """ 
 Newton-Raphson method for numerically
@@ -21,6 +27,9 @@ def new_rap(n, M, e):
         En = En - np.float(f.evalf(subs= {E:En})) / np.float(fprim.evalf(subs= {E:En}))
     
     return En    
+
+#################################################################################
+## RUN CODE
 
 if __name__ == "__main__":
     i = new_rap(2, 3, 2)

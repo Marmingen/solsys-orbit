@@ -14,8 +14,6 @@ class System():
         self.bodies = {}
         self.mass = 0
         self.h = Vector(0,0,0)
-        
-        self.t = 0
     
     def update(self):
         self.total_mass = 0

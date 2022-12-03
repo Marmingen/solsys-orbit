@@ -10,7 +10,7 @@ from configsolsys import *
 
 def main():
 
-    app = App(200)
+    app = App(200,1,10, date="2022-12-03-00")
 
     inner_planets(app)
     
@@ -25,8 +25,8 @@ def main():
     app.show()
     
     
-    
-
+#################################################################################
+## RUN CODE
 
 if __name__ == "__main__":
     main()

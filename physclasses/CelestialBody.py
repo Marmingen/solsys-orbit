@@ -30,7 +30,11 @@ class CelestialBody():
         self.P = calc_period(self.orbital_elements[0])
         self.n = mean_motion(self.P)
         
-        self.T = T
+        if T == J2000:
+            self.T = T
+        else:
+            self.T = nrml_to_JDT(T)
+            
         self.R = R_orb2ec(self.orbital_elements)
         
         self.ellipse = [[],[],[]]
