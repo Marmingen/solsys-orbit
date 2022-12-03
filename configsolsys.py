@@ -106,3 +106,7 @@ def add_halleys(app):
     
 def comets(app):
     add_halleys(app)
+    
+def custom(app):
+    """customizable function that can be called from main"""
+    pass

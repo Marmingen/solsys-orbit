@@ -22,7 +22,7 @@ def main():
 
     anim = app.animate()
     
-    app.show()
+    app.save(anim, "inner_planets.gif")
     
     
 #################################################################################

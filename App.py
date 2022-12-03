@@ -92,11 +92,16 @@ class App():
     def animate(self):        
         """matplotlib animation with self.speed ms interval between frames"""
         ani = animation.FuncAnimation(self.fig, self.frame, self.time, fargs=(self.data, self.artists),
-                                interval=self.speed, blit=False, repeat=True)
+                                interval=self.speed, blit=False, repeat=False)
         self.show()
         
         return ani
         
+    
+    def save(self, anim, path):
+        writergif = animation.PillowWriter(fps=30)
+        
+        anim.save(path, writer=writergif)
     
     def show(self):
         plt.show()
