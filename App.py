@@ -27,6 +27,8 @@ class App():
         self.ax.set_zlabel('Z [au]')
         self.ax.set_zlim3d([-10, 10]) # for not exaggerating the inclination
         
+        # self.fig.suptitle("hey")
+        
         if date == J2000:
             self.date = date
         else:
@@ -54,7 +56,6 @@ class App():
         
     def set_date(self, date):
         self.date = nrml_to_JDT(date)
-
 
     def draw_body(self):
         """creates a scatterplot for all bodies in self.bodies"""
@@ -137,4 +138,4 @@ if __name__ == "__main__":
     
     anim = app.animate()
     
-    app.save(anim, "halley_passage.gif")
+    # app.save(anim, "halley_passage.gif")

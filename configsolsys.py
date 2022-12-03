@@ -8,9 +8,10 @@ import csv
 from physclasses import CelestialBody
 
 #################################################################################
-## FUNCTIONS
+## CSV READER
 
 def _readcsv(obj):
+    """reads the data in orbital_elements.csv, edit this csv with recent data"""
     orbital_data = "data/orbital_elements.csv"
     with open(orbital_data) as file:
         csvreader = csv.reader(file)
@@ -20,7 +21,13 @@ def _readcsv(obj):
     
     return -1
     
-    
+#################################################################################
+## ADDITION FUNCTION
+
+#####################################
+## addition of planet
+
+# adds neptune
 def add_neptune(app):
     neptune_orbs = _readcsv("neptune")
     neptune = CelestialBody(name="Neptune", orbital_elements=neptune_orbs,\
@@ -28,6 +35,7 @@ def add_neptune(app):
     
     app.system.add_body(neptune)
 
+# adds uranus
 def add_uranus(app):
     uranus_orbs = _readcsv("uranus")
     uranus = CelestialBody(name="Uranus", orbital_elements=uranus_orbs,\
@@ -35,6 +43,7 @@ def add_uranus(app):
     
     app.system.add_body(uranus)
     
+# adds saturn
 def add_saturn(app):
     saturn_orbs = _readcsv("saturn")
     saturn = CelestialBody(name="Saturn", orbital_elements=saturn_orbs,\
@@ -42,6 +51,7 @@ def add_saturn(app):
     
     app.system.add_body(saturn)
     
+# adds jupiter
 def add_jupiter(app):
     jupiter_orbs = _readcsv("jupiter")
     jupiter = CelestialBody(name="Jupiter", orbital_elements=jupiter_orbs[0:5],\
@@ -49,6 +59,7 @@ def add_jupiter(app):
     
     app.system.add_body(jupiter)
     
+# adds mars
 def add_mars(app):
     mars_orbs = _readcsv("mars")
     mars = CelestialBody(name="Mars", orbital_elements=mars_orbs,\
@@ -56,6 +67,7 @@ def add_mars(app):
     
     app.system.add_body(mars)
     
+# adds earth
 def add_earth(app):
     earth_orbs = _readcsv("earth")
     earth = CelestialBody(name="Earth", mass=5.9722e24, orbital_elements=earth_orbs,\
@@ -63,6 +75,7 @@ def add_earth(app):
     
     app.system.add_body(earth)
     
+# adds venus
 def add_venus(app):
     venus_orbs = _readcsv("venus")
     venus = CelestialBody(name="Venus", mass=4.8673e24, orbital_elements=venus_orbs,\
@@ -70,6 +83,7 @@ def add_venus(app):
     
     app.system.add_body(venus)
     
+# adds mercury
 def add_mercury(app):
     mercury_orbs = _readcsv("mercury")
     mercury = CelestialBody(name="Mercury", mass=3.285e23, orbital_elements=mercury_orbs,\
@@ -77,6 +91,20 @@ def add_mercury(app):
     
     app.system.add_body(mercury)
     
+#####################################
+## addition of comets
+    
+def add_halleys(app):
+    halley_orbs = _readcsv("halley")
+    halley = CelestialBody(name="Halley\'s Comet", orbital_elements=halley_orbs,\
+        color="#4EF0F4", T=halley_orbs[-1])
+    
+    app.system.add_body(halley)
+    
+#####################################
+## bundles
+
+# adds the entire solar system
 def solsys(app):
     
     add_jupiter(app)
@@ -86,28 +114,29 @@ def solsys(app):
 
     inner_planets(app)
     
+# adds the inner planets
 def inner_planets(app):
 
     add_mercury(app)
     add_venus(app)
     add_earth(app)
-    add_mars(app)
-
-def test_object(app):
+    add_mars(app)    
     
-    add_earth(app)
-    
-def add_halleys(app):
-    halley_orbs = _readcsv("halley")
-    halley = CelestialBody(name="Halley\'s Comet", orbital_elements=halley_orbs,\
-        color="#4EF0F4", T=halley_orbs[-1])
-    
-    app.system.add_body(halley)
-    
+# adds comets
 def comets(app):
     add_earth(app)
     add_halleys(app)
     
+#####################################
+## custom bundle
+    
 def custom(app):
     """customizable function that can be called from main"""
     pass
+
+#####################################
+## object for testing
+
+def test_object(app):
+    
+    add_earth(app)
