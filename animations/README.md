@@ -1,0 +1,1 @@
+the animations saved from the user will be saved in this directory

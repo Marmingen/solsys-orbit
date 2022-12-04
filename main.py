@@ -33,7 +33,7 @@ def main():
 
         anim = app.animate()
         
-        save_anim(anim)
+        save_anim(app, anim)
         
         print("initializing new animation")
         time.sleep(1)

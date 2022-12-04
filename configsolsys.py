@@ -100,6 +100,44 @@ def add_halleys(app):
         color="#4EF0F4", T=halley_orbs[-1])
     
     app.system.add_body(halley)
+
+#####################################
+## addition of minor bodies
+
+def add_pluto(app):
+    pluto_orbs = _readcsv("pluto")
+    pluto = CelestialBody(name="Pluto", orbital_elements=pluto_orbs,\
+        color="#D23286", T=pluto_orbs[-1])
+    
+    app.system.add_body(pluto)
+    
+def add_ceres(app):
+    ceres_orbs = _readcsv("ceres")
+    ceres = CelestialBody(name="Ceres", orbital_elements=ceres_orbs,\
+        color="#AF487E", T=ceres_orbs[-1])
+    
+    app.system.add_body(ceres)
+
+def add_eris(app):
+    eris_orbs = _readcsv("eris")
+    eris = CelestialBody(name="Eris", orbital_elements=eris_orbs,\
+        color="#954F74", T=eris_orbs[-1])
+    
+    app.system.add_body(eris)
+
+def add_makemake(app):
+    makemake_orbs = _readcsv("makemake")
+    makemake = CelestialBody(name="Makemake", orbital_elements=makemake_orbs,\
+        color="#B76E94", T=makemake_orbs[-1])
+    
+    app.system.add_body(makemake)
+
+def add_haumea(app):
+    haumea_orbs = _readcsv("haumea")
+    haumea = CelestialBody(name="Pluto", orbital_elements=haumea_orbs,\
+        color="#D49DBA", T=haumea_orbs[-1])
+    
+    app.system.add_body(haumea)
     
 #####################################
 ## bundles
@@ -126,6 +164,16 @@ def inner_planets(app):
 def comets(app):
     add_earth(app)
     add_halleys(app)
+
+# adds minor planets
+def minor_planets(app):
+    add_pluto(app)
+    add_ceres(app)
+    add_eris(app)
+    add_makemake(app)
+    add_haumea(app)
+    
+    add_earth(app)
     
 #####################################
 ## custom bundle
