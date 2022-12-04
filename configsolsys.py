@@ -220,4 +220,4 @@ def test_object(app):
     add_earth(app)
     # add_halebopp(app)
     # add_hyaku(app)
-    add_tempeltuttle(app)
+    #add_tempeltuttle(app)

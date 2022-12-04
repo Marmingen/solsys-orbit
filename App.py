@@ -9,7 +9,7 @@ import numpy as np
 from physclasses import *
 from configsolsys import test_object, comets
 from constants import J2000
-from mathematics.astrofuncs import nrml_to_JDT
+from mathematics.astrofuncs import nrml_to_JDT, JDT_to_nrml
 
 #################################################################################
 ## APP CLASS
@@ -19,6 +19,9 @@ class App():
     def __init__(self, time=1, speed=10, interval=1, date=J2000):
         self.fig = plt.figure()
         self.ax = p3.Axes3D(self.fig)
+        # plt.title("hey", loc="left")
+        
+        self.date_title = plt.suptitle("", y=0.98, x=0.15)
         
         self.ax.set_xlabel('X [au]')
         
@@ -33,6 +36,8 @@ class App():
             self.date = date
         else:
             self.date = nrml_to_JDT(date)
+            
+        self.og_date = self.date
         
         self.set_time(time)
         self.set_speed(speed)
@@ -43,6 +48,7 @@ class App():
         # self.labels = []
         
         self.ax.scatter(0,0,0,color="yellow",marker='o', edgecolor="black", label="Sun")
+        
         
         
     def set_time(self, t):
@@ -56,6 +62,10 @@ class App():
         
     def set_date(self, date):
         self.date = nrml_to_JDT(date)
+        self.og_date = self.date
+
+    def update_date_title(self):
+        self.date_title.set_text(f"date: {JDT_to_nrml(self.date)}")
 
     def draw_body(self):
         """creates a scatterplot for all bodies in self.bodies"""
@@ -90,6 +100,13 @@ class App():
     def frame(self, numb, data, artists):
         """frame-method for the matplotlib animation"""
         data = list(data)
+        
+        self.date += self.interval
+        
+        if numb == 0:
+            self.date = self.og_date
+        
+        self.update_date_title()
              
         for body, artist in zip(data, artists):
             artist._offsets3d = (np.array([body.lposx[numb]]), np.array([body.lposy[numb]]),\
@@ -125,14 +142,14 @@ class App():
 ## RUN CODE
         
 if __name__ == "__main__":
-    
-    app = App(900,60,10)
+       
+    app = App(300,60,10)
     
     app.set_date("1985-01-01-00")
     
     test_object(app)
     
-    comets(app)
+    #comets(app)
     
     app.initial_calculation()
     

@@ -13,6 +13,8 @@ from main import clear
 
 def menu(app):
     
+    clear()
+    
     selection = True  
     
     def _exit(app):
@@ -120,9 +122,11 @@ def save_anim(app, anim):
     while True:
         choice = input("save animation? [y/n]: ")
         if choice.lower().strip() == "y":
+            print("saving...")
             name = str(dt.now()).replace(' ', '-')
             name = name[:name.find(".")].replace(':', '-')
             app.save(anim, f"animations/astroanim{name}.gif")
+            print(f"animation saved at: animations/astroanim{name}.gif")
             break
         elif choice.lower().strip() == "n":
             break

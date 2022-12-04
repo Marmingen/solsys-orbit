@@ -60,3 +60,26 @@ def nrml_to_JDT(date):
     JD -=H/24
 
     return JD
+
+def JDT_to_nrml(JD):
+    Q = JD+0.5
+    Z = int(JD+0.5)
+    W = int((Z - 1867216.25)/36524.25)
+    X = int(W/4)
+    A = int(Z+1+W-X)
+    B = int(A+1524)
+    C = int((B-122.1)/365.25)
+    D = int(365.25*C)
+    E = int((B-D)/30.6001)
+    F = int(30.6001*E)
+    day = int(B-D-F+(Q-Z))
+    if E > 13:
+        month = E - 13
+    else:
+        month = E - 1
+    if month in [1, 2]:
+        year = C-4715
+    else:
+        year = C-4716
+    
+    return f"{year}-{month:{0}2}-{day:{0}2}"
