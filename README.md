@@ -9,7 +9,8 @@
 
 ## See historical passages
 
-![halley_passage](https://user-images.githubusercontent.com/106428188/205457954-8228ee9e-bb39-4db4-9b83-4a86abf806ce.gif)
+![halley_pass](https://user-images.githubusercontent.com/106428188/205494007-08c95107-c99e-4db4-aeb1-b650e38550a4.gif)
+
 
 As seen above you can use this program to see historical passages, such as the 1986 perihelion of Halley's comet.
 
@@ -17,5 +18,5 @@ As seen above you can use this program to see historical passages, such as the 1
 ## How to install
 
 - Clone the repository
-- Run 'install.py'
-- Run 'main.py'
+- Run ´install.py´
+- Run ´main.py´
