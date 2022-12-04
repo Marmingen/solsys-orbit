@@ -144,22 +144,20 @@ def add_haumea(app):
 
 # adds the entire solar system
 def solsys(app):
+    inner_planets(app)
     
     add_jupiter(app)
     add_saturn(app)
     add_uranus(app)
     add_neptune(app)
 
-    inner_planets(app)
-    
 # adds the inner planets
 def inner_planets(app):
-
     add_mercury(app)
     add_venus(app)
     add_earth(app)
-    add_mars(app)    
-    
+    add_mars(app)
+
 # adds comets
 def comets(app):
     add_earth(app)

@@ -1,0 +1,4 @@
+#### required packages ####
+numpy
+sympy
+matplotlib

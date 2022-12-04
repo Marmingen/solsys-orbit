@@ -54,13 +54,13 @@ def menu(app):
 
 
 def _time_sel(app):
-    
+    """user input for determining the animation time, fps, and interval"""
     tim = []
     
     while True:
         print(bar)
-        print("input the total time (days), speed of the animation (fps)")
-        print("and the interval between animated frames (days)")
+        print("input the total time (days), speed of the animation")
+        print("(fps) and the interval between animated frames (days)")
         print("format:")
         print("input: time speed interval")
         print(bar)
@@ -75,7 +75,7 @@ def _time_sel(app):
                 try:
                     attrib(int(selection))
                 except:
-                    print(f"{selection} is not a number")
+                    print(f"{selection} is not an integer")
                     OK = False
                 
             if OK:
@@ -88,6 +88,7 @@ def _time_sel(app):
     
     
 def _date_sel(app):
+    """user input for determining the date"""
     date = ""
     
     while True:
@@ -114,6 +115,7 @@ def _date_sel(app):
         
         
 def save_anim(app, anim):
+    """user input for saving the animation"""
     while True:
         choice = input("save animation? [y/n]: ")
         if choice.lower().strip() == "y":
@@ -130,7 +132,7 @@ def save_anim(app, anim):
         
         
 def select_adds(app):
-    
+    """user input for selecting what bodeis to show"""
     opts = {"mer": add_mercury, "ven": add_venus, "ear": add_earth,\
         "mar": add_mars, "jup": add_jupiter, "sat": add_saturn,\
         "ura": add_uranus, "nep": add_neptune, "hal": add_halleys,\

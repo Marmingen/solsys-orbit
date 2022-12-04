@@ -27,8 +27,6 @@ def main():
         if not running:
             break
         
-        #test_object(app)
-        
         app.initial_calculation()
 
         anim = app.animate()
