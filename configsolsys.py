@@ -100,6 +100,34 @@ def add_halleys(app):
         color="#4EF0F4", T=halley_orbs[-1])
     
     app.system.add_body(halley)
+    
+def add_halebopp(app):
+    hbop_orbs = _readcsv("halebopp")
+    hbop = CelestialBody(name="Hale-Bopp", orbital_elements=hbop_orbs,\
+        color="#4EF0F4", T=hbop_orbs[-1])
+    
+    app.system.add_body(hbop)
+
+def add_hyaku(app):
+    hyaku_orbs = _readcsv("hyakutake")
+    hyaku = CelestialBody(name="Hyakutake", orbital_elements=hyaku_orbs,\
+        color="#4EF0F4", T=hyaku_orbs[-1])
+    
+    app.system.add_body(hyaku)
+
+def add_tempeltuttle(app):
+    tempel_orbs = _readcsv("tempeltuttle")
+    tempel = CelestialBody(name="Tempel-Tuttle", orbital_elements=tempel_orbs,\
+        color="#4EF0F4", T=tempel_orbs[-1])
+    
+    app.system.add_body(tempel)
+    
+def add_swifttuttle(app):
+    swift_orbs = _readcsv("swifttuttle")
+    swift = CelestialBody(name="Swift-Tuttle", orbital_elements=swift_orbs,\
+        color="#4EF0F4", T=swift_orbs[-1])
+    
+    app.system.add_body(swift)
 
 #####################################
 ## addition of minor bodies
@@ -162,6 +190,10 @@ def inner_planets(app):
 def comets(app):
     add_earth(app)
     add_halleys(app)
+    add_halebopp(app)
+    add_hyaku(app)
+    add_tempeltuttle(app)
+    add_swifttuttle(app)
 
 # adds minor planets
 def minor_planets(app):
@@ -186,3 +218,6 @@ def custom(app):
 def test_object(app):
     
     add_earth(app)
+    # add_halebopp(app)
+    # add_hyaku(app)
+    add_tempeltuttle(app)

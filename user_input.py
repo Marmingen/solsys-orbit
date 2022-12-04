@@ -19,7 +19,8 @@ def menu(app):
         pass
   
     choices = {"inner": inner_planets, "full":solsys, "comets": comets,\
-        "minor":minor_planets,"select":select_adds, "custom":custom, "exit":_exit}
+        "minor":minor_planets,"select":select_adds, "custom":custom,\
+        "test":test_object,"exit":_exit}
     
     while True:
         print("Select Action")
@@ -138,7 +139,9 @@ def select_adds(app):
         "ura": add_uranus, "nep": add_neptune, "hal": add_halleys,\
         "plu": add_pluto, "cer": add_ceres, "eri": add_eris,\
         "mak": add_makemake, "hau": add_haumea, "sol": solsys,\
-        "inn": inner_planets, "cus": custom}
+        "inn": inner_planets, "cus": custom, "hbo":add_halebopp,\
+        "hya": add_hyaku, "tem": add_tempeltuttle,\
+        "swi": add_swifttuttle}
     
     running = True
     
@@ -153,6 +156,8 @@ def select_adds(app):
         print(f"{'Earth: ':{'.'}<21}{' ear':<4} | {'Mars: ':{'.'}<21}{' mar':<4}")
         print(f"{'Jupiter: ':{'.'}<21}{' jup':<4} | {'Saturn: ':{'.'}<21}{' sat':<4}")
         print(f"{'Uranus: ':{'.'}<21}{' ura':<4} | {'Neptune: ':{'.'}<21}{' nep':<4}")
+        print(f"{'Hale Bopp: ':{'.'}<21}{' hbo':<4} | {'Hyakutake: ':{'.'}<21}{' hya':<4}")
+        print(f"{'Tempel-Tuttle: ':{'.'}<21}{' tem':<4} | {'Swift-Tuttle: ':{'.'}<21}{' swi':<4}")
         print(f"{'Halleys: ':{'.'}<21}{' hal':<4} | {'Pluto: ':{'.'}<21}{' plu':<4}")
         print(f"{'Ceres: ':{'.'}<21}{' cer':<4} | {'Eris: ':{'.'}<21}{' eri':<4}")
         print(f"{'Makemake: ':{'.'}<21}{' mak':<4} | {'Haumea: ':{'.'}<21}{' hau':<4}")

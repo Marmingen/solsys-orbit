@@ -45,3 +45,4 @@ if __name__ == "__main__":
     
     print("exiting...")
     time.sleep(1)
+    clear()
