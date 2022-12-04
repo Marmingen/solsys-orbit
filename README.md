@@ -18,5 +18,5 @@ As seen above you can use this program to see historical passages, such as the 1
 ## How to install
 
 - Clone the repository
-- Run ´install.py´
-- Run ´main.py´
+- Run `install.py`
+- Run `main.py`
