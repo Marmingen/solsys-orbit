@@ -28,7 +28,7 @@ In the main-selection, the input `exit` will safely exit the program.
 
 ### Predefined packages
 
-The inputs `inner`, `full`, `comets`, and `minors` will run predefined packages of solar system objects. More information about these packages and what they entail can be deducted from the `configsolsys.py` file. The package `custom` is preallocated as a package to be changed and determined by the user.  
+The inputs `inner`, `full`, `comets`, and `minor` will run predefined packages of solar system objects. More information about these packages and what they entail can be deducted from the `configsolsys.py` file. The package `custom` is preallocated as a package to be changed and determined by the user.  
 
 ### User selection of bodies
 
