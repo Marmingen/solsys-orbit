@@ -6,8 +6,8 @@ import mpl_toolkits.mplot3d.axes3d as p3
 import matplotlib.animation as animation
 import numpy as np
 
-from physclasses import *
-from configsolsys import test_object, comets
+from physclasses.System import System
+from configsolsys import test_object
 from constants import J2000
 from mathematics.astrofuncs import nrml_to_JDT, JDT_to_nrml
 
@@ -19,7 +19,6 @@ class App():
     def __init__(self, time=1, speed=10, interval=1, date=J2000):
         self.fig = plt.figure()
         self.ax = p3.Axes3D(self.fig)
-        # plt.title("hey", loc="left")
         
         self.date_title = plt.suptitle("", y=0.98, x=0.15)
         
@@ -48,7 +47,6 @@ class App():
         # self.labels = []
         
         self.ax.scatter(0,0,0,color="yellow",marker='o', edgecolor="black", label="Sun")
-        
         
         
     def set_time(self, t):

@@ -5,7 +5,7 @@ Customizable functions that determine what to display in the main animation
 ## IMPORTS
 
 import csv
-from physclasses import CelestialBody
+from physclasses.CelestialBody import CelestialBody
 
 #################################################################################
 ## CSV READER

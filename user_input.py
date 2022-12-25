@@ -123,8 +123,8 @@ def save_anim(app, anim):
         choice = input("save animation? [y/n]: ")
         if choice.lower().strip() == "y":
             print("saving...")
-            name = str(dt.now()).replace(' ', '-')
-            name = name[:name.find(".")].replace(':', '-')
+            name = str(dt.now()).replace(' ', '').replace('-','')
+            name = name[:name.find(".")].replace(':', '')
             app.save(anim, f"animations/astroanim{name}.gif")
             print(f"animation saved at: animations/astroanim{name}.gif")
             break
@@ -137,7 +137,7 @@ def save_anim(app, anim):
         
         
 def select_adds(app):
-    """user input for selecting what bodeis to show"""
+    """user input for selecting what bodies to show"""
     opts = {"mer": add_mercury, "ven": add_venus, "ear": add_earth,\
         "mar": add_mars, "jup": add_jupiter, "sat": add_saturn,\
         "ura": add_uranus, "nep": add_neptune, "hal": add_halleys,\

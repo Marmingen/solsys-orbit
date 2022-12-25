@@ -4,8 +4,7 @@
 import math
 from .Matrix import Matrix
 from constants import *
-from .NR import new_rap
-from mathematics import Vector
+from mathematics.Vector import Vector
 
 #################################################################################
 ## FUNCTIONS

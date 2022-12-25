@@ -1,10 +1,11 @@
 #################################################################################
 ## IMPORTS
 
-from mathematics import *
+import numpy
+from mathematics.Vector import Vector
 from constants import J2000
 from mathematics.astrofuncs import *
-import numpy
+from mathematics.NR import new_rap
 from math import radians
 
 #################################################################################

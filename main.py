@@ -4,7 +4,6 @@
 import time
 import os
 from App import App
-from physclasses import *
 from user_input import *
 
 #################################################################################
